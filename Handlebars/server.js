@@ -23,7 +23,8 @@ app.get('', (req, res) => {
 })
 
 app.get('/productos', (req, res) => {
-    res.render("products", { products: productContainer.getAllItems() });
+    console.log(productContainer.getAllItems().length)
+    res.render("products", { products: productContainer.getAllItems(), why: true });
 });
 
 app.post('/productos', (req, res) => {
