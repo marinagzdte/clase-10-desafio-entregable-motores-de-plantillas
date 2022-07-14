@@ -1,18 +1,14 @@
 import express from 'express';
-import { engine } from 'express-handlebars';
 import Container from './Container.js';
+import partials from 'express-partials';
 
 const app = express();
 const productContainer = new Container();
 
-app.engine('hbs', engine({
-    extname: 'hbs',
-    defaultLayout: 'index.hbs',
-    layoutsDir: "./views/layouts",
-    partialsDir: "./views/partials"
-}));
-app.set('view engine', 'hbs');
-app.set('views', "./views");
+app.set('views', './views');
+app.set('view engine', 'ejs');
+app.set('view options', { layout: "layout.ejs" })
+app.use(partials());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

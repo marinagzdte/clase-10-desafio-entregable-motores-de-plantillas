@@ -1,0 +1,33 @@
+<% if(products.length) { %>
+    <h1>Vista de productos</h1>
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th colspan="2" scope="col">Nombre</th>
+                <th colspan="2" scope="col">Precio</th>
+                <th colspan="2" scope="col">Producto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i<products.length; i++) {%>
+                <tr>
+                    <td colspan="2">
+                        <%= products[i].title%>
+                    </td>
+                    <td colspan="2">
+                        <%= products[i].price%>
+                    </td>
+                    <td colspan="2"><img src="<%= products[i].thumbnail %>" class="img-fluid" alt="..."></td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+    <div class="button-div">
+        <button class="btn btn-primary"><a href="/">Ir al formulario</a></button>
+    </div>
+    <% } else { %>
+        <h3>No hay productos</h3>
+        <div class="button-div">
+            <button class="btn btn-primary"><a href="/">Ir al formulario</a></button>
+        </div>
+        <% } %>

@@ -1,0 +1,27 @@
+extends layouts/index.pug
+block body
+    script.
+        document.onkeyup = (e) => {
+            if (e.target.tagName === 'INPUT') {
+                const canSubmit = [...document.forms.form.querySelectorAll('input[type="text"],input[type="url"]')]
+                    .every(i => {
+                        return i.value
+                    })
+                document.forms.form.querySelector('button[type="submit"]').disabled = !canSubmit
+            }
+        }
+    h1 Ingrese un producto
+    form(name="form" action="/productos" method="POST")
+        div.form-group.mb-3
+            label.form-label Nombre
+            input.form-control(type="text" name="title" placeholder="Nombre del producto")
+        div.form-group.mb-3
+            label.form-label Precio
+            input.form-control(type="text" name="price" placeholder="Precio del producto")
+        div.form-group.mb-3
+            label.form-label URL foto
+            input.form-control(type="url" name="thumbnail" placeholder="URL de la foto")
+        div.button-div
+            button.btn.btn-primary(type="submit" disabled="disabled") Cargar producto
+            button.btn.btn-primary(type="button")
+                a(href="/productos") Ver todos

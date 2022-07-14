@@ -1,0 +1,26 @@
+extends layouts/index.pug
+block body
+    if products.length
+        h1 Vista de productos
+        table.table.table-borderless
+            thead
+                tr
+                    th(colspan='2' scope='col') Nombre
+                    th(colspan='2' scope='col') Precio
+                    th(colspan='2' scope='col') Producto
+            tbody
+                each product in products
+                    tr
+                        td(colspan='2')= product.title
+                        td(colspan='2')= product.price
+                        td(colspan='2')
+                            img.img-fluid(src=product.thumbnail alt='...')
+        div.button-div
+            button.btn.btn-primary
+                a(href='/') Ir al formulario
+
+    else
+        h3 No hay productos
+        div.button-div
+            button.btn.btn-primary
+                a(href='/') Ir al formulario
